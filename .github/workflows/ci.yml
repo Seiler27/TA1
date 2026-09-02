@@ -1,0 +1,23 @@
+name: CI - Inventario Logistica Andina Huancayo
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar codigo
+        uses: actions/checkout@v4
+
+      - name: Configurar Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Compilacion (instalar dependencias)
+        run: npm ci
+
+      - name: Pruebas automatizadas
+        run: npm test
